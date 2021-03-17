@@ -1,0 +1,89 @@
+<div class="container overflow-show">
+  <div *ngIf="cpusAmount == 0">
+    No elements found
+  </div>
+  <div class="mb-3">
+    <a [routerLink]="['/']"><button class="btn btn-link">Back</button></a>
+  </div>
+  <div class="mb-3">
+    <a [routerLink]="['/socket-edit', socket.id]"><button class="btn btn-info">Edit</button></a>
+    <button 
+      class="btn btn-danger ml-2"
+      mwlConfirmationPopover
+      popoverTitle=""
+      popoverMessage="Delete this socket?"
+      placement="right"
+      (confirm)="deleteSocket(socket.id)"
+      (cancel)="cancelClicked = true">
+        Delete
+    </button>
+    <a [routerLink]="['/cpu-create']" class="ml-2">
+      <button class="btn btn-success">New CPU</button>
+    </a>
+  </div>
+  <div class="errorMessage text-danger" *ngIf="errorMessage">
+    {{ this.errorMessage }}
+  </div>
+  
+  <ejs-accordion *ngIf="cpusAmount > 0">
+    <e-accordionitems>
+      <e-accordionitem *ngFor="let cpu of socket.cpus">
+        <ng-template #header>
+          <div class="row">
+            <div class="col-lg-2">
+              Brand: {{cpu.brand}}
+            </div>
+            <div class="col-lg-2">
+              Model: {{cpu.model}}
+            </div>
+            <div class="col-lg-2">
+              Socket: {{socket.name}}
+            </div>
+          </div>
+        </ng-template>
+        <ng-template #content>
+          <div class="row">
+            <div class="col-lg-12">
+              Clockspeed: {{ cpu.clockspeed }} MHz
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              Cores: {{ cpu.cores_amount }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              Threads: {{ cpu.threads_amount }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              TDP : {{ cpu.tdp }} W
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              Price: {{ cpu.price }} Euro
+            </div>
+          </div>
+          <div class="row" style="min-height: 60px;">
+            <div class="col-lg-12 mb-5" style="position:absolute; z-index: 1520;">
+              <a [routerLink]="['/cpu-edit', cpu.id]"><button class="btn btn-info">Edit</button></a>
+              <button 
+              class="btn btn-danger ml-2"
+              mwlConfirmationPopover
+              popoverTitle=""
+              popoverMessage="Delete this CPU?"
+              placement="right"
+              (confirm)="deleteCpu(cpu.id)"
+              (cancel)="cancelClicked = true">
+                Delete
+              </button>
+            </div>
+          </div>
+        </ng-template>
+      </e-accordionitem>
+    </e-accordionitems>
+  </ejs-accordion>
+</div>

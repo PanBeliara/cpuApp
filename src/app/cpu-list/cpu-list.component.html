@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="mb-3">
+    <a [routerLink]="['/cpu-create']">
+      <button class="btn btn-success">New CPU</button>
+    </a>
+  </div>
+  <div class="errorMessage text-danger" *ngIf="errorMessage">
+    {{ this.errorMessage }}
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Model</th>
+            <th scope="col">Socket</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cpu of cpus">
+            <td>{{ cpu.id }}</td>
+            <td>{{ cpu.brand }}</td>
+            <td>{{ cpu.model }}</td>
+            <td>{{ cpu.socket.name }}</td>
+            <td>
+              <button 
+              class="btn btn-danger"
+              mwlConfirmationPopover
+              popoverTitle=""
+              popoverMessage="Delete this CPU?"
+              placement="left"
+              (confirm)="deleteCpu(cpu.id)"
+              (cancel)="cancelClicked = true">
+                Delete
+              </button>
+              <a [routerLink]="['/cpu-edit', cpu.id]"><button class="btn btn-info">Edit</button></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

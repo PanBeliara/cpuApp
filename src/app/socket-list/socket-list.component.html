@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="mb-3">
+    <a [routerLink]="['/socket-create']">
+      <button class="btn btn-success">New socket</button>
+    </a>
+  </div>
+  <div class="errorMessage text-danger" *ngIf="errorMessage">
+    {{ this.errorMessage }}
+  </div>
+  <div>
+    <table class="table table-bordered table-striped">
+      <tbody>
+          <tr *ngFor="let socket of sockets">
+            <a [routerLink]="['/sockets', socket.id]">
+              <p>{{ socket.name }}</p>
+            </a>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
