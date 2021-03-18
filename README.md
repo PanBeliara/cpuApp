@@ -13,5 +13,6 @@ It shouldn't return any error. Works on my machine etc. I should have placed som
 
 ## Requirements:
 - node 12.18.2 or newer
+- Angular CLI 10.0.1
 - npm 6.14.5 or newer
 - CpuApi client running (unless you don't care about the main features)
