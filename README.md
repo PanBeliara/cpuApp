@@ -1,7 +1,9 @@
 # cpuApp
  Angular frontend client for CpuApi
 
-A web application consuming CpuApi REST API. Created while learning this technology. Run by *ng serve* command or by running **\start.bat**.
+A web application consuming CpuApi REST API. Created while learning this technology. 
+Firstly use *npm i* command to get all required dependencies.
+Run by *ng serve* command or by running **\start.bat**.
 
 ## It provides:
 - CRUD for Socket and Cpu tables
